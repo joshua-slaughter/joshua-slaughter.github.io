@@ -38,7 +38,23 @@ params:
     - name: "Bluesky"
       icon: bluesky
       url: "https://bsky.app/profile/jslaught.bsky.social"
-
+    - name: "ORCID"
+      icon: orcid
+      url: "https://orcid.org/0000-0002-1400-6599"
+  # Extra facts for search engines' structured data
+  schema:
+    description: "Ph.D. candidate in Informatics at the University of Edinburgh and Marshall Scholar researching the genetic and socioecological factors behind human health."
+    # Pages about you that aren't in the social list above. Add your Wikidata item here once it exists.
+    profiles:
+      - "https://www.marshallscholarship.org/scholars/scholar-profiles/joshua-slaughter/"
+    organizations:
+      - name: "The University of Edinburgh"
+        wikidata: "https://www.wikidata.org/wiki/Q160302"
+      - name: "University of Maryland, Baltimore County"
+        wikidata: "https://www.wikidata.org/wiki/Q735049"
+    press:
+      - headline: "UMBC Marshall Scholar Joshua Slaughter seeks to advance equity in personalized medicine"
+        url: "https://umbc.edu/stories/umbc-marshall-scholar-joshua-slaughter-seeks-to-advance-equity-in-personalized-medicine/"
   mysite:
     credit: false # footer "Created using GaryKing.org/mysite" line
     discovery: true # invisible generator tag + schema.org Person data

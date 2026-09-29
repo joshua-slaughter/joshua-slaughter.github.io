@@ -44,14 +44,43 @@
 {{- if ne $mysite.discovery false }}
 <meta name="generator" content="Created using GaryKing.org/mysite (https://gking.harvard.edu/mysite)">
 {{- if .IsHome }}
+{{- $schema := site.Params.schema | default dict }}
+
+{{- /* Profile links: the social list plus extra pages about you (schema.profiles). */}}
 {{- $sameAs := slice }}
 {{- range site.Params.social }}{{ $sameAs = $sameAs | append .url }}{{ end }}
+{{- range $schema.profiles }}{{ $sameAs = $sameAs | append . }}{{ end }}
+
+{{- /* Current institution and alma maters, from data/background.yaml, linked to Wikidata when listed. */}}
+{{- $affiliation := dict "@type" "CollegeOrUniversity" "name" site.Params.institution }}
+{{- $alumniOf := slice }}
+{{- range site.Data.background.education }}
+  {{- $name := .institution }}
+  {{- $org := dict "@type" "CollegeOrUniversity" "name" $name }}
+  {{- range $schema.organizations }}
+    {{- if eq .name $name }}{{ $org = dict "@type" "CollegeOrUniversity" "name" $name "sameAs" .wikidata }}{{ end }}
+  {{- end }}
+  {{- if eq $name site.Params.institution }}{{ $affiliation = $org }}{{ else }}{{ $alumniOf = $alumniOf | append $org }}{{ end }}
+{{- end }}
+
+{{- /* Awards from data/awards.yaml; press coverage from schema.press. */}}
+{{- $awards := slice }}
+{{- range site.Data.awards }}{{ $awards = $awards | append .name }}{{ end }}
+{{- $press := slice }}
+{{- range $schema.press }}{{ $press = $press | append (dict "@type" "NewsArticle" "headline" .headline "url" .url) }}{{ end }}
+
 {{- $person := dict
   "@context" "https://schema.org"
   "@type" "Person"
+  "@id" (printf "%s#person" site.Home.Permalink)
   "name" site.Params.author
+  "description" ($schema.description | default site.Params.description)
+  "image" (site.Params.photo | absURL)
   "jobTitle" site.Params.role
-  "affiliation" (dict "@type" "Organization" "name" site.Params.institution)
+  "affiliation" $affiliation
+  "alumniOf" $alumniOf
+  "award" $awards
+  "subjectOf" $press
   "url" site.Home.Permalink
   "sameAs" $sameAs
   "isBasedOn" "https://gking.harvard.edu/mysite"
