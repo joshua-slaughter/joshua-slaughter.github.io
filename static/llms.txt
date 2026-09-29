@@ -1,0 +1,9 @@
+# Joshua Slaughter
+
+> Joshua Slaughter is a Ph.D. candidate in the School of Informatics at the University of Edinburgh, advised by Ava Khamseh and Chris Ponting. Research areas: complex-trait genetics, machine learning, and semiparametric statistics, with a focus on the genetics of myalgic encephalomyelitis/chronic fatigue syndrome (ME/CFS).
+
+- [Home](https://joshua-slaughter.github.io/): biography, research interests, and contact details
+- [Research](https://joshua-slaughter.github.io/#research): working papers and publications
+- [Software](https://joshua-slaughter.github.io/#software): TarGene and TMLE.jl
+- [CV (PDF)](https://joshua-slaughter.github.io/files/cv.pdf)
+- [Contact](https://joshua-slaughter.github.io/#contact): joshua.slaughter@ed.ac.uk

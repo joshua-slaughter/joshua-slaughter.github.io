@@ -1,0 +1,70 @@
+# Site configuration.
+# baseURL must be the final public https:// address of the site. If you move the
+# site to a custom domain (e.g. https://joshuaslaughter.com/), change it here.
+baseURL: "https://joshua-slaughter.github.io/"
+title: "Joshua Slaughter"
+locale: en
+enableRobotsTXT: true # generated from layouts/robots.txt
+
+disableKinds: ["taxonomy", "term", "RSS"]
+
+params:
+  author: "Joshua Slaughter"
+  description: "Ph.D. Candidate, School of Informatics, The University of Edinburgh"
+  tagline: "I study the underlying genetic and socioecological factors that contribute to human disease and health outcomes."
+  role: "Ph.D. Candidate"
+  department: "School of Informatics"
+  institution: "The University of Edinburgh"
+  email: "joshua.slaughter@ed.ac.uk"
+  photo: "images/photo.jpg"
+  ogImage: "images/photo-og.jpg"
+  cv: "files/cv.pdf"
+
+  # Your name as it appears in author lists; it is shown in bold.
+  authorHighlight: ["Slaughter J"]
+
+  # Social links, shown in the header and the Contact section.
+  # Supported icons: github, scholar, linkedin, bluesky, orcid, twitter, email
+  social:
+    - name: "GitHub"
+      icon: github
+      url: "https://github.com/joshua-slaughter"
+    - name: "Google Scholar"
+      icon: scholar
+      url: "https://scholar.google.com/citations?user=-ufkw10AAAAJ&hl=en"
+    - name: "LinkedIn"
+      icon: linkedin
+      url: "https://www.linkedin.com/in/joshua-slaughter/"
+    - name: "Bluesky"
+      icon: bluesky
+      url: "https://bsky.app/profile/jslaught.bsky.social"
+
+  mysite:
+    credit: false # footer "Created using GaryKing.org/mysite" line
+    discovery: true # invisible generator tag + schema.org Person data
+
+menu:
+  main:
+    - name: Research
+      url: "#research"
+      weight: 10
+    - name: Software
+      url: "#software"
+      weight: 20
+    - name: Teaching
+      url: "#teaching"
+      weight: 30
+    - name: Background
+      url: "#background"
+      weight: 40
+    - name: CV
+      url: "files/cv.pdf"
+      weight: 50
+    - name: Contact
+      url: "#contact"
+      weight: 60
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true

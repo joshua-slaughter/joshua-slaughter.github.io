@@ -1,0 +1,212 @@
+{{ define "main" }}
+{{- $p := site.Params }}
+{{- $data := hugo.Data }}
+
+{{/* ---------- Hero ---------- */}}
+<section class="hero" aria-labelledby="name">
+  {{- with $p.photo }}
+  <img class="hero-photo" src="{{ . | relURL }}" alt="Portrait of {{ $p.author }}" width="180" height="180">
+  {{- end }}
+  <div class="hero-text">
+    <h1 id="name">{{ site.Title }}</h1>
+    <p class="hero-role">{{ $p.role }}, {{ $p.department }}<br>{{ $p.institution }}</p>
+    {{- with $p.affiliations }}
+    <p class="hero-affiliations">
+      {{- range $i, $a := . }}{{ if $i }}<span aria-hidden="true"> · </span>{{ end }}{{ if $a.url }}<a href="{{ $a.url }}" target="_blank" rel="noopener">{{ $a.name }}</a>{{ else }}{{ $a.name }}{{ end }}{{ end -}}
+    </p>
+    {{- end }}
+    {{- with $p.tagline }}<p class="hero-tagline">{{ . }}</p>{{ end }}
+    <div class="hero-links">
+      <ul class="icon-links">
+        {{- range $p.social }}
+        <li><a href="{{ .url }}" target="_blank" rel="noopener me" aria-label="{{ .name }}" title="{{ .name }}">{{ partial "icon.html" .icon }}</a></li>
+        {{- end }}
+        {{- with $p.email }}
+        <li><a href="mailto:{{ . }}" aria-label="Email" title="Email">{{ partial "icon.html" "email" }}</a></li>
+        {{- end }}
+      </ul>
+      {{- with $p.cv }}
+      <a class="button" href="{{ . | relURL }}" target="_blank" rel="noopener">{{ partial "icon.html" "cv" }}CV (PDF)</a>
+      {{- end }}
+    </div>
+  </div>
+</section>
+
+{{/* ---------- Banner art: sampling distributions converging to the normal (tools/make_art.py) ---------- */}}
+<div class="hero-art" aria-hidden="true">
+  <div class="art-band">{{ partial "art/convergence.html" . }}</div>
+</div>
+
+{{/* ---------- About ---------- */}}
+{{- if or .Content .Params.interests }}
+<section id="about" class="section" aria-labelledby="about-heading">
+  <h2 id="about-heading">About</h2>
+  <div class="prose">{{ .Content }}</div>
+  {{- with .Params.interests }}
+  <h3 class="subheading">Research interests</h3>
+  <ul class="tags">
+    {{- range . }}<li>{{ . }}</li>{{ end }}
+  </ul>
+  {{- end }}
+</section>
+{{- end }}
+
+{{/* ---------- Research ---------- */}}
+{{- with $data.papers }}
+{{- $jmp := where . "job_market_paper" true }}
+{{- $rest := where . "job_market_paper" "!=" true }}
+{{- $published := slice }}{{ $working := slice }}
+{{- range $rest }}
+  {{- if in (slice "published" "accepted") .status }}{{ $published = $published | append . }}{{ else }}{{ $working = $working | append . }}{{ end }}
+{{- end }}
+<section id="research" class="section" aria-labelledby="research-heading">
+  <h2 id="research-heading">Research</h2>
+
+  {{- range $jmp }}
+  <article class="jmp">
+    <p class="jmp-label">Job Market Paper</p>
+    <h3 class="jmp-title">
+      {{- $href := "" }}{{ if .pdf }}{{ $href = .pdf | relURL }}{{ else if .link }}{{ $href = .link }}{{ end }}
+      {{- if $href }}<a href="{{ $href }}" target="_blank" rel="noopener">{{ .title }}</a>{{ else }}{{ .title }}{{ end -}}
+    </h3>
+    {{- $highlight := site.Params.authorHighlight | default slice }}
+    <p class="paper-authors">{{ range $i, $a := .authors }}{{ if $i }}, {{ end }}{{ if in $highlight $a }}<strong>{{ $a }}</strong>{{ else }}{{ $a }}{{ end }}{{ end }}</p>
+    {{- with .abstract }}<p class="jmp-abstract">{{ . }}</p>{{ end }}
+    <p class="paper-meta">{{ with .status }}<span class="badge">{{ . }}</span>{{ end }}{{ with .pdf }} <a class="button button-small" href="{{ . | relURL }}" target="_blank" rel="noopener">PDF</a>{{ end }}</p>
+  </article>
+  {{- end }}
+
+  {{- with $working }}
+  <h3 class="subheading">Working Papers</h3>
+  <ul class="papers">
+    {{- range . }}{{ partial "paper.html" . }}{{ end }}
+  </ul>
+  {{- end }}
+
+  {{- with $published }}
+  <h3 class="subheading">Publications</h3>
+  <ul class="papers">
+    {{- range . }}{{ partial "paper.html" . }}{{ end }}
+  </ul>
+  {{- end }}
+</section>
+{{- end }}
+
+{{/* ---------- Software ---------- */}}
+{{- with $data.projects }}
+<section id="software" class="section" aria-labelledby="software-heading">
+  <h2 id="software-heading">Software</h2>
+  <ul class="items">
+    {{- range . }}
+    <li class="item">
+      <p class="item-title"><a href="{{ .url }}" target="_blank" rel="noopener">{{ .name }}</a>{{ with .language }} <span class="badge">{{ . }}</span>{{ end }}</p>
+      <p class="item-desc">{{ .description }}</p>
+    </li>
+    {{- end }}
+  </ul>
+</section>
+{{- end }}
+
+{{/* ---------- Teaching ---------- */}}
+{{- with $data.teaching }}
+<section id="teaching" class="section" aria-labelledby="teaching-heading">
+  <h2 id="teaching-heading">Teaching</h2>
+  {{- range . }}
+  <h3 class="subheading">{{ .institution }}{{ with .unit }}<span class="subheading-unit">, {{ . }}</span>{{ end }}</h3>
+  <ul class="rows">
+    {{- range .courses }}
+    <li class="row">
+      <span class="row-main">{{ .course }}<span class="row-sub">{{ .role }}</span></span>
+      <span class="row-date">{{ .term }}</span>
+    </li>
+    {{- end }}
+  </ul>
+  {{- end }}
+</section>
+{{- end }}
+
+{{/* ---------- Background ---------- */}}
+{{- with $data.background }}
+<section id="background" class="section" aria-labelledby="background-heading">
+  <h2 id="background-heading">Background</h2>
+  {{- with .education }}
+  <h3 class="subheading">Education</h3>
+  <ul class="rows">
+    {{- range . }}
+    <li class="row">
+      <span class="row-main">{{ .degree }}<span class="row-sub">{{ .institution }}</span>
+        {{- range .details }}<span class="row-sub">{{ . }}</span>{{ end }}
+      </span>
+      <span class="row-date">{{ .years }}</span>
+    </li>
+    {{- end }}
+  </ul>
+  {{- end }}
+  {{- with .experience }}
+  <h3 class="subheading">Prior Research Experience</h3>
+  <ul class="rows">
+    {{- range . }}
+    <li class="row">
+      <span class="row-main">{{ .group }}<span class="row-sub">{{ .institution }}{{ with .advisors }} · Advisors: {{ . }}{{ end }}</span>
+        {{- with .description }}<span class="row-desc">{{ . }}</span>{{ end }}
+      </span>
+      <span class="row-date">{{ .years }}</span>
+    </li>
+    {{- end }}
+  </ul>
+  {{- end }}
+</section>
+{{- end }}
+
+{{/* ---------- Awards ---------- */}}
+{{- with $data.awards }}
+<section id="awards" class="section" aria-labelledby="awards-heading">
+  <h2 id="awards-heading">Fellowships &amp; Awards</h2>
+  <ul class="rows rows-compact">
+    {{- range . }}
+    <li class="row"><span class="row-main">{{ .name }}</span><span class="row-date">{{ .year }}</span></li>
+    {{- end }}
+  </ul>
+</section>
+{{- end }}
+
+{{/* ---------- News (only if data/news.yaml exists) ---------- */}}
+{{- with $data.news }}
+<section id="news" class="section" aria-labelledby="news-heading">
+  <h2 id="news-heading">News</h2>
+  <ul class="rows rows-compact">
+    {{- range first 8 . }}
+    <li class="row"><span class="row-main">{{ .text | markdownify }}</span><span class="row-date">{{ .date }}</span></li>
+    {{- end }}
+  </ul>
+</section>
+{{- end }}
+
+{{/* ---------- Blog (only if posts exist in content/blog/) ---------- */}}
+{{- $posts := where site.RegularPages "Section" "blog" }}
+{{- with $posts }}
+<section id="blog" class="section" aria-labelledby="blog-heading">
+  <h2 id="blog-heading">Writing</h2>
+  <ul class="rows rows-compact">
+    {{- range first 5 . }}
+    <li class="row"><span class="row-main"><a href="{{ .RelPermalink }}">{{ .Title }}</a></span><span class="row-date"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2006" }}</time></span></li>
+    {{- end }}
+  </ul>
+  {{- if gt (len .) 5 }}<p><a href="{{ "blog/" | relURL }}">All posts →</a></p>{{ end }}
+</section>
+{{- end }}
+
+{{/* ---------- Contact ---------- */}}
+<section id="contact" class="section" aria-labelledby="contact-heading">
+  <h2 id="contact-heading">Contact</h2>
+  {{- with $p.email }}
+  <p class="contact-email"><a href="mailto:{{ . }}">{{ partial "icon.html" "email" }}{{ . }}</a></p>
+  {{- end }}
+  <p class="contact-address">{{ $p.department }}<br>{{ $p.institution }}</p>
+  <ul class="contact-links">
+    {{- range $p.social }}
+    <li><a href="{{ .url }}" target="_blank" rel="noopener me">{{ partial "icon.html" .icon }}{{ .name }}</a></li>
+    {{- end }}
+  </ul>
+</section>
+{{ end }}

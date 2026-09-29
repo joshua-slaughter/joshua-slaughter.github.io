@@ -1,0 +1,9 @@
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p>&copy; {{ now.Year }} {{ site.Params.author }}</p>
+    {{- $mysite := site.Params.mysite | default dict }}
+    {{- if ne $mysite.credit false }}
+    <p class="credit">Created using <a href="https://garyking.org/mysite" target="_blank" rel="noopener">GaryKing.org/mysite</a></p>
+    {{- end }}
+  </div>
+</footer>

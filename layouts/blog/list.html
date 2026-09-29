@@ -1,0 +1,17 @@
+{{ define "main" }}
+<article class="page">
+  {{- /* Use content/blog/_index.md's title if that file exists; otherwise "Writing". */}}
+  <h1>{{ with .File }}{{ $.Title }}{{ else }}Writing{{ end }}</h1>
+  {{- with .Content }}<div class="prose">{{ . }}</div>{{ end }}
+  <ul class="posts">
+    {{- range .Pages.ByDate.Reverse }}
+    <li class="post-item">
+      <p class="item-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></p>
+      <p class="paper-meta"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time></p>
+      {{- with .Description }}<p class="item-desc">{{ . }}</p>{{ end }}
+    </li>
+    {{- end }}
+  </ul>
+  <p class="back"><a href="{{ site.Home.RelPermalink }}">← Back to home</a></p>
+</article>
+{{ end }}

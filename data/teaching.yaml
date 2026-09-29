@@ -1,0 +1,32 @@
+# Teaching, grouped by institution. Add a new course to the right group,
+# or add a new group with its own "institution" and "courses".
+
+- institution: "The University of Edinburgh"
+  unit: "School of Informatics"
+  courses:
+    - course: "Methods for Causal Inference"
+      role: "Teaching Fellow"
+      term: "Spring 2025"
+
+- institution: "The University of Edinburgh"
+  unit: "Edinburgh Futures Institute"
+  courses:
+    - course: "Insights Through Data"
+      role: "Teaching Fellow"
+      term: "Fall 2023, Fall 2024"
+    - course: "Representing Data"
+      role: "Teaching Fellow"
+      term: "Spring 2024"
+    - course: "Ethical Data Futures"
+      role: "Teaching Fellow"
+      term: "Spring 2024"
+    - course: "Ethics and Politics of Data"
+      role: "Teaching Fellow"
+      term: "Fall 2023"
+
+- institution: "University of Maryland, Baltimore County"
+  unit: ""
+  courses:
+    - course: "CMSC 201: Computer Science I"
+      role: "Teaching Assistant"
+      term: "2019–2022"

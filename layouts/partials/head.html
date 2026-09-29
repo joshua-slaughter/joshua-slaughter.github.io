@@ -1,0 +1,61 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+{{- $title := site.Title }}
+{{- if not .IsHome }}{{ $title = printf "%s | %s" .Title site.Title }}{{ end }}
+{{- $description := .Description | default site.Params.description }}
+<title>{{ $title }}</title>
+<meta name="description" content="{{ $description }}">
+<meta name="author" content="{{ site.Params.author }}">
+<link rel="canonical" href="{{ .Permalink }}">
+
+<meta property="og:type" content="{{ if .IsHome }}profile{{ else }}article{{ end }}">
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $description }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:site_name" content="{{ site.Title }}">
+{{- with site.Params.ogImage }}
+<meta property="og:image" content="{{ . | absURL }}">
+{{- end }}
+<meta name="twitter:card" content="summary">
+
+<link rel="icon" href="{{ "favicon.ico" | relURL }}" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ "favicon-32x32.png" | relURL }}">
+<link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | relURL }}">
+
+{{- $css := resources.Get "css/style.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+
+{{- /* Runs before the page paints: swaps the no-js class (so the mobile menu can collapse)
+       and applies a saved light/dark choice. Without a saved choice the site follows the
+       visitor's system setting; without JS it still does, and the menu links stay visible. */}}
+<script>
+  (function () {
+    var root = document.documentElement;
+    root.className = "js";
+    try {
+      var theme = localStorage.getItem("theme");
+      if (theme === "light" || theme === "dark") root.setAttribute("data-theme", theme);
+    } catch (e) {}
+  })();
+</script>
+
+{{- $mysite := site.Params.mysite | default dict }}
+{{- if ne $mysite.discovery false }}
+<meta name="generator" content="Created using GaryKing.org/mysite (https://gking.harvard.edu/mysite)">
+{{- if .IsHome }}
+{{- $sameAs := slice }}
+{{- range site.Params.social }}{{ $sameAs = $sameAs | append .url }}{{ end }}
+{{- $person := dict
+  "@context" "https://schema.org"
+  "@type" "Person"
+  "name" site.Params.author
+  "jobTitle" site.Params.role
+  "affiliation" (dict "@type" "Organization" "name" site.Params.institution)
+  "url" site.Home.Permalink
+  "sameAs" $sameAs
+  "isBasedOn" "https://gking.harvard.edu/mysite"
+}}
+<script type="application/ld+json">{{ $person | jsonify | safeJS }}</script>
+{{- end }}
+{{- end }}

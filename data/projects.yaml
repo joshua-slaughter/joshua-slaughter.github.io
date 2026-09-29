@@ -1,0 +1,11 @@
+# Software shown in the Software section.
+
+- name: "TarGene"
+  description: "A bioinformatics pipeline for the semi-parametric estimation of genetic effects on human traits."
+  url: "https://github.com/TARGENE/targene-pipeline"
+  language: "Nextflow"
+
+- name: "TMLE.jl"
+  description: "A Julia package for semi-parametric estimation with targeted minimum loss-based estimation (TMLE)."
+  url: "https://github.com/TARGENE/TMLE.jl"
+  language: "Julia"

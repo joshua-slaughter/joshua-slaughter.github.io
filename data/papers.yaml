@@ -1,0 +1,61 @@
+# Papers shown in the Research section, in the order listed here (newest first).
+#
+# status: published | accepted | revise and resubmit | under review |
+#         preprint | working paper | work in progress
+# Anything other than "published" or "accepted" appears under "Working Papers".
+#
+# pdf:  a file you uploaded to static/files/ (e.g. "files/my-paper.pdf"), or leave blank
+# link: DOI or publisher link, used when there is no pdf
+# job_market_paper: true shows the paper in a highlighted card with its abstract
+
+- title: "Seven replicated genomic associations of myalgic encephalomyelitis/chronic fatigue syndrome: a biobank study"
+  authors: ["Slaughter J", "Labayle O", "Roskams-Hieter B", "Dibble JJ", "McGrath SJ", "Beentjes SV", "Khamseh A", "Ponting CP"]
+  year: 2026
+  status: "preprint"
+  venue: "medRxiv"
+  pdf: ""
+  link: "https://doi.org/10.64898/2026.09.09.26362115"
+  abstract: ""
+  job_market_paper: false
+
+- title: "Initial findings from the DecodeME genome-wide association study of myalgic encephalomyelitis/chronic fatigue syndrome"
+  authors: ["Genetics Delivery Team", "…", "Slaughter J", "…", "Ponting CP"]
+  year: 2025
+  status: "preprint"
+  venue: "medRxiv"
+  pdf: ""
+  link: "https://doi.org/10.1101/2025.08.06.25333109"
+  abstract: ""
+  job_market_paper: false
+
+- title: "TarGene: A Nextflow pipeline for the estimation of genetic effects on human traits via semi-parametric methods"
+  authors: ["Labayle O", "Slaughter J", "Roskams-Hieter B", "Tetley-Campbell K", "van der Laan M", "Ponting CP", "Khamseh A", "Beentjes SV"]
+  year: 2026
+  status: "published"
+  venue: "Journal of Open Source Software"
+  pdf: ""
+  link: "https://doi.org/10.21105/joss.09603"
+
+- title: "Semiparametric efficient estimation of small genetic effects in large-scale population cohorts"
+  authors: ["Labayle O", "Roskams-Hieter B", "Slaughter J", "Tetley-Campbell K", "van der Laan M", "Ponting CP", "Beentjes SV", "Khamseh A"]
+  year: 2025
+  status: "published"
+  venue: "Biostatistics"
+  pdf: ""
+  link: "https://doi.org/10.1093/biostatistics/kxaf030"
+
+- title: "The expansion of tree plantations across tropical biomes"
+  authors: ["Fagan ME", "Kim D", "Settle W", "Ferry L", "Drew J", "Carlson H", "Slaughter J", "Schaferbien J", "Tyukavina A", "Harris NL", "Goldman E", "Ordway EM"]
+  year: 2022
+  status: "published"
+  venue: "Nature Sustainability"
+  pdf: ""
+  link: "https://doi.org/10.1038/s41893-022-00904-w"
+
+- title: "The ephemerality of secondary forests in southern Costa Rica"
+  authors: ["Reid JL", "Fagan ME", "Lucas J", "Slaughter J", "Zahawi RA"]
+  year: 2019
+  status: "published"
+  venue: "Conservation Letters"
+  pdf: ""
+  link: "https://doi.org/10.1111/conl.12607"

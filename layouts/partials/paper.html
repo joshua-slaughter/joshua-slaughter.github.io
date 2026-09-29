@@ -1,0 +1,25 @@
+{{- /* One paper row. Called with the paper map from data/papers.yaml. */ -}}
+{{- $href := "" }}
+{{- if .pdf }}{{ $href = .pdf | relURL }}{{ else if .link }}{{ $href = .link }}{{ end }}
+{{- $highlight := site.Params.authorHighlight | default slice }}
+{{- $badges := dict
+  "accepted" "Accepted"
+  "revise and resubmit" "R&R"
+  "under review" "Under review"
+  "preprint" "Preprint"
+  "working paper" "Working paper"
+  "work in progress" "In progress"
+}}
+<li class="paper">
+  <p class="paper-title">
+    {{- if $href }}<a href="{{ $href }}" target="_blank" rel="noopener">{{ .title }}</a>{{ else }}{{ .title }}{{ end -}}
+  </p>
+  <p class="paper-authors">
+    {{- range $i, $a := .authors }}{{ if $i }}, {{ end }}{{ if in $highlight $a }}<strong>{{ $a }}</strong>{{ else }}{{ $a }}{{ end }}{{ end -}}
+  </p>
+  <p class="paper-meta">
+    {{- with .venue }}<cite>{{ . }}</cite>{{ end }}{{ with .year }}{{ if $.venue }}, {{ end }}{{ . }}{{ end }}
+    {{- with index $badges .status }} <span class="badge">{{ . }}</span>{{ end }}
+    {{- if and .pdf .link }} · <a href="{{ .link }}" target="_blank" rel="noopener">Link</a>{{ end -}}
+  </p>
+</li>

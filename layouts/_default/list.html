@@ -1,0 +1,12 @@
+{{ define "main" }}
+<article class="page">
+  <h1>{{ .Title }}</h1>
+  {{- with .Content }}<div class="prose">{{ . }}</div>{{ end }}
+  <ul class="rows rows-compact">
+    {{- range .Pages }}
+    <li class="row"><span class="row-main"><a href="{{ .RelPermalink }}">{{ .Title }}</a></span>{{ if not .Date.IsZero }}<span class="row-date">{{ .Date.Format "Jan 2006" }}</span>{{ end }}</li>
+    {{- end }}
+  </ul>
+  <p class="back"><a href="{{ site.Home.RelPermalink }}">← Back to home</a></p>
+</article>
+{{ end }}

@@ -1,0 +1,10 @@
+{{ define "main" }}
+<article class="page post">
+  <header class="post-header">
+    <h1>{{ .Title }}</h1>
+    <p class="paper-meta"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time></p>
+  </header>
+  <div class="prose">{{ .Content }}</div>
+  <p class="back"><a href="{{ "blog/" | relURL }}">← All posts</a> · <a href="{{ site.Home.RelPermalink }}">Home</a></p>
+</article>
+{{ end }}

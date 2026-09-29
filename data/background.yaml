@@ -1,0 +1,35 @@
+# Education and prior research experience, shown in the Background section.
+
+education:
+  - degree: "Ph.D. in Informatics"
+    institution: "The University of Edinburgh"
+    years: "2022–present"
+    details:
+      - "Advisors: Ava Khamseh and Chris Ponting"
+      - "Committee: Ajitha Rajan and Caroline Dalton"
+  - degree: "B.S. in Computer Engineering"
+    institution: "University of Maryland, Baltimore County"
+    years: "2022"
+    details: []
+
+experience:
+  - group: "Princeton Neuroscience Institute"
+    institution: "Princeton University"
+    advisors: "Jonathan Cohen and Coraline Rinn Iordan"
+    years: "2020–2021"
+    description: "Extracted multi-layer feature activations from convolutional neural networks and correlated them with neuronal activity in the visual stream."
+  - group: "Machine Learning and Signal Processing Lab"
+    institution: "University of Maryland, Baltimore County"
+    advisors: "Tülay Adali and Zois Boukouvalas"
+    years: "2019–2022"
+    description: "Applied independent component analysis and machine learning to neuroimaging and natural language processing."
+  - group: "Systems, Networking, and Performance Lab"
+    institution: "Carnegie Mellon University"
+    advisors: "Justine Sherry and Srinivasan Seshan"
+    years: "2019"
+    description: "Built classification models for TCP congestion control algorithms to monitor internet fairness."
+  - group: "Earth From Above Lab"
+    institution: "University of Maryland, Baltimore County"
+    advisors: "Matthew Fagan"
+    years: "2017–2019"
+    description: "Classified forest cover over time using satellite imagery."
