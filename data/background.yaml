@@ -3,13 +3,13 @@
 education:
   - degree: "Ph.D. in Informatics"
     institution: "The University of Edinburgh"
-    years: "2022–present"
+    years: "2022-2026"
     details:
       - "Advisors: Ava Khamseh and Chris Ponting"
       - "Committee: Ajitha Rajan and Caroline Dalton"
   - degree: "B.S. in Computer Engineering"
     institution: "University of Maryland, Baltimore County"
-    years: "2022"
+    years: "2018-2022"
     details: []
 
 experience:
