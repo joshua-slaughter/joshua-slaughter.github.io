@@ -27,6 +27,6 @@
 - institution: "University of Maryland, Baltimore County"
   unit: ""
   courses:
-    - course: "CMSC 201: Computer Science I"
+    - course: "Computer Science I"
       role: "Teaching Assistant"
       term: "2019–2022"

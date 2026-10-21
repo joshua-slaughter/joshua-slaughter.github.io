@@ -10,9 +10,9 @@ disableKinds: ["taxonomy", "term", "RSS"]
 
 params:
   author: "Joshua Slaughter"
-  description: "Ph.D. Candidate, School of Informatics, The University of Edinburgh"
+  description: "School of Informatics, The University of Edinburgh"
   tagline: "I study the underlying genetic and socioecological factors that contribute to human disease and health outcomes."
-  role: "Ph.D. Candidate"
+  role: "Recent Ph.D. Graduate"
   department: "School of Informatics"
   institution: "The University of Edinburgh"
   email: "joshua.slaughter@ed.ac.uk"

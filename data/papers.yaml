@@ -36,6 +36,14 @@
   pdf: ""
   link: "https://doi.org/10.21105/joss.09603"
 
+- title: "Smart Materials Enabling Flexible Bioelectronic Sensing for Decentralized Monitoring"
+  authors: ["Slaughter C", "Slaughter JE", "Slaughter J", "Slaughter G"]
+  year: 2026
+  status: "published"
+  venue: "TrAC Trends in Analytical Chemistry"
+  pdf: ""
+  link: "https://doi.org/10.1016/j.trac.2026.119204"
+
 - title: "Semiparametric efficient estimation of small genetic effects in large-scale population cohorts"
   authors: ["Labayle O", "Roskams-Hieter B", "Slaughter J", "Tetley-Campbell K", "van der Laan M", "Ponting CP", "Beentjes SV", "Khamseh A"]
   year: 2025
