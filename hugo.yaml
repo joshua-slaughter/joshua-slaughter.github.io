@@ -11,7 +11,7 @@ disableKinds: ["taxonomy", "term", "RSS"]
 params:
   author: "Joshua Slaughter"
   description: "School of Informatics, The University of Edinburgh"
-  tagline: "I study the underlying genetic and socioecological factors that contribute to human disease and health outcomes."
+  tagline: "I use data-driven methods to uncover the underlying genetic and socioecological factors that contribute to human disease and health outcomes."
   role: "Recent Ph.D. Graduate"
   department: "School of Informatics"
   institution: "The University of Edinburgh"
